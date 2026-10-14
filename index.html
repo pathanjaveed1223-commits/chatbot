@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8fc">
+    <meta name="description" content="Ask questions, explore ideas, and learn about any topic with your private, local AI assistant.">
+    <title>Code Instructor — Your personal AI assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="/" aria-label="Code Instructor home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span>code<span class="brand-light">instructor</span></span>
+        </a>
+        <button class="new-chat-button" id="new-chat" type="button">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg>
+          <span>New lesson</span><kbd>⌘ K</kbd>
+        </button>
+        <div class="sidebar-section">
+          <p class="section-label">YOUR LEARNING</p>
+          <button class="nav-item active" id="nav-tutor" type="button">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 4.5h13v9h-7l-4 3v-3h-2z"/><path d="M7 8h6M7 10.5h4"/></svg>
+            <span>AI tutor</span><span class="nav-dot"></span>
+          </button>
+          <button class="nav-item" id="nav-history" type="button">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l2.5 1.5M3.5 6.5V3.5M3.5 3.5h3"/></svg>
+            <span>Recent lessons</span>
+          </button>
+        </div>
+        <div class="sidebar-section course-section">
+          <div class="section-heading"><p class="section-label">LEARNING PATHS</p><button class="icon-button tiny" id="add-path" type="button" aria-label="Start a new path">+</button></div>
+          <button class="path-item selected" data-language="Python" type="button"><span class="language-icon python">Py</span><span class="path-copy"><strong>Python fundamentals</strong><small>Lesson 1 · Getting started</small></span><span class="path-progress"><i></i></span></button>
+          <button class="path-item" data-language="JavaScript" type="button"><span class="language-icon javascript">JS</span><span class="path-copy"><strong>JavaScript essentials</strong><small>Ready to explore</small></span></button>
+          <button class="path-item" data-language="HTML & CSS" type="button"><span class="language-icon html">H<span>C</span></span><span class="path-copy"><strong>Web development</strong><small>Ready to explore</small></span></button>
+          <button class="path-item" data-language="SQL" type="button"><span class="language-icon sql">SQL</span><span class="path-copy"><strong>SQL & databases</strong><small>Ready to explore</small></span></button>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="privacy-card"><span class="privacy-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4.5" y="8.5" width="11" height="8" rx="2"/><path d="M7 8.5V6a3 3 0 0 1 6 0v2.5M10 11v3"/></svg></span><div><strong>Your code stays yours</strong><span>Private, local & secure</span></div><span class="privacy-check">✓</span></div>
+          <button class="profile-button" type="button"><span class="avatar">Y</span><span class="profile-copy"><strong>Your workspace</strong><small>Learning mode</small></span><svg class="chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m7 8 3 3 3-3"/></svg></button>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="breadcrumbs"><button class="mobile-menu icon-button" id="mobile-menu" type="button" aria-label="Open menu"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14"/></svg></button><span class="crumb-muted">Learning space</span><svg class="crumb-chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m8 5 5 5-5 5"/></svg><span class="crumb-current">AI tutor</span></div>
+          <div class="topbar-actions"><span class="local-badge"><span></span> Runs locally</span><button class="icon-button" id="help-button" type="button" aria-label="Help"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M8 7.7a2.1 2.1 0 1 1 3.4 1.7c-.9.7-1.4 1-1.4 2.1M10 14.5v.1"/></svg></button></div>
+        </header>
+        <div class="persistent-controls">
+          <div class="lesson-controls">
+            <label class="control-card" for="language-select"><span class="control-icon language-control-icon">Py</span><span class="control-info"><span>LEARNING LANGUAGE</span><input id="language-select" type="text" list="language-options" value="Python" placeholder="Type any language…" aria-label="Choose or type any programming language" maxlength="80" autocomplete="off"><datalist id="language-options"><option>Python</option><option>JavaScript</option><option>TypeScript</option><option>Java</option><option>C</option><option>C++</option><option>C#</option><option>Go</option><option>Rust</option><option>Ruby</option><option>PHP</option><option>Swift</option><option>Kotlin</option><option>Scala</option><option>R</option><option>Julia</option><option>Perl</option><option>Lua</option><option>Dart</option><option>Elixir</option><option>Erlang</option><option>Haskell</option><option>OCaml</option><option>F#</option><option>Clojure</option><option>Common Lisp</option><option>Scheme</option><option>Racket</option><option>Prolog</option><option>Fortran</option><option>COBOL</option><option>Pascal</option><option>Delphi</option><option>Objective-C</option><option>Visual Basic</option><option>VB.NET</option><option>Groovy</option><option>PowerShell</option><option>Bash</option><option>Shell</option><option>Fish</option><option>AWK</option><option>Assembly</option><option>WebAssembly</option><option>Solidity</option><option>Vyper</option><option>SQL</option><option>PL/SQL</option><option>T-SQL</option><option>HTML</option><option>CSS</option><option>SCSS</option><option>Less</option><option>XML</option><option>JSON</option><option>YAML</option><option>TOML</option><option>Markdown</option><option>LaTeX</option><option>Regex</option><option>MATLAB</option><option>Octave</option><option>Verilog</option><option>SystemVerilog</option><option>VHDL</option><option>Tcl</option><option>GDScript</option><option>Haxe</option><option>Crystal</option><option>Nim</option><option>Zig</option><option>Mojo</option><option>Elm</option><option>PureScript</option><option>Reason</option><option>ReScript</option><option>Raku</option><option>Nix</option><option>Terraform (HCL)</option><option>Dockerfile</option><option>Makefile</option><option>GitHub Actions</option><option>Gradle</option><option>Scratch</option></datalist></span><svg class="select-chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m7 8 3 3 3-3"/></svg></label>
+            <div class="control-card model-card"><span class="control-icon model-control-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5 17 6.3v7.4L10 17.5l-7-3.8V6.3z"/><path d="m3.3 6.5 6.7 3.8 6.7-3.8M10 10.3v7"/></svg></span><span class="control-info"><span>YOUR LOCAL MODEL</span><select id="model-select" aria-label="Choose an Ollama model"><option value="">Looking for models…</option></select></span><span class="model-status" id="model-status"><i></i><span>Connecting</span></span></div>
+          </div>
+        </div>
+
+        <section class="workspace" aria-label="Coding tutor chat">
+          <div class="conversation" id="conversation">
+            <div class="welcome" id="welcome">
+              <div class="welcome-eyebrow"><span class="sparkle">✳</span> YOUR PERSONAL AI ASSISTANT</div>
+              <h1>Curious about<br><span>anything?</span></h1>
+              <p class="welcome-description">Ask about anything—from coding and science to history, writing, and everyday questions. Explore ideas, get useful explanations, and keep learning at your own pace.</p>
+
+              <div class="suggestion-heading"><span>Pick a place to start</span><span class="suggestion-heading-line"></span></div>
+              <div class="suggestion-grid">
+                <button class="suggestion-card" data-prompt="I'm brand new to {{language}}. Can you give me a friendly first lesson with a tiny example I can try?"><span class="suggestion-icon icon-sprout">✳</span><span><strong>Start from scratch</strong><small>A gentle, no-jargon introduction</small></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5"/></svg></button>
+                <button class="suggestion-card" data-prompt="Teach me an important {{language}} concept that beginners often find confusing. Use a simple analogy and a runnable example."><span class="suggestion-icon icon-layers">◈</span><span><strong>Explain a concept</strong><small>Make a tricky topic finally click</small></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5"/></svg></button>
+                <button class="suggestion-card" data-prompt="Give me a small, fun {{language}} coding challenge that matches my skill level. Include a hint, but don't show the solution yet."><span class="suggestion-icon icon-bolt">↯</span><span><strong>Try a challenge</strong><small>Practice by actually building</small></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5"/></svg></button>
+                <button class="suggestion-card" data-prompt="Help me understand and improve this {{language}} code. First explain what it does, then suggest improvements:\n\n"><span class="suggestion-icon icon-code">&lt;/&gt;</span><span><strong>Review my code</strong><small>Get kind, clear feedback</small></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5"/></svg></button>
+              </div>
+              <div class="welcome-footnote"><span class="footnote-sparkle">✦</span> A patient tutor. A fresh start. Your own pace.</div>
+            </div>
+            <div class="message-list" id="message-list" aria-live="polite"></div>
+          </div>
+
+          <div class="composer-wrap">
+            <form class="composer" id="chat-form">
+              <div class="attachment-list" id="attachment-list" aria-label="Attached files"></div>
+              <textarea id="message-input" rows="1" placeholder="Ask anything…" aria-label="Your message"></textarea>
+              <div class="composer-bottom"><div class="composer-hints"><button class="attach-button" id="attach-button" type="button" aria-label="Attach files" title="Attach text, code, or image files"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 10.5 5.2-5.2a3 3 0 0 1 4.2 4.2l-6.8 6.8a4.5 4.5 0 0 1-6.4-6.4l6.7-6.7"/></svg></button><input id="file-input" type="file" accept="text/*,.txt,.md,.markdown,.csv,.tsv,.json,.jsonl,.yaml,.yml,.toml,.xml,.html,.htm,.css,.scss,.less,.js,.jsx,.mjs,.cjs,.ts,.tsx,.py,.pyi,.ipynb,.java,.kt,.kts,.c,.h,.cc,.cpp,.cxx,.hpp,.cs,.go,.rs,.rb,.php,.swift,.m,.mm,.scala,.clj,.cljs,.ex,.exs,.erl,.hrl,.hs,.lhs,.ml,.mli,.fs,.fsx,.sql,.sh,.bash,.zsh,.ps1,.psm1,.lua,.pl,.pm,.r,.R,.jl,.dart,.vue,.svelte,.astro,.graphql,.gql,.proto,.tf,.hcl,.nix,.dockerfile,.makefile,.mk,.gradle,.properties,.ini,.cfg,.conf,.log,.ipynb,.svg,.png,.jpg,.jpeg,.webp,.gif" multiple hidden><span class="hint-pill">⇧</span><span>for a new line</span><span class="hint-divider"></span><span class="composer-language"><span class="language-dot"></span><span id="composer-language">Python</span></span></div><button class="send-button" id="send-button" type="submit" aria-label="Send message" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15V5M5.5 9.5 10 5l4.5 4.5"/></svg><span>Send</span></button></div>
+            </form>
+            <p class="composer-disclaimer">Attach text, code, or images · Max 5 MB each · Files are processed locally <span>·</span> Powered by your local Ollama model</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

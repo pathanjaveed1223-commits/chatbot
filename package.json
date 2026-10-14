@@ -1,0 +1,12 @@
+{
+  "name": "code-instructor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local-first coding tutor powered by Ollama",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
